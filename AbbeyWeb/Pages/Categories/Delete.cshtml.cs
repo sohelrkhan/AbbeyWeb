@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace AbbeyWeb.Pages.Categories
 {
     [BindProperties]
-    public class EditModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _db;
 
-        public EditModel(ApplicationDbContext db)
+        public DeleteModel(ApplicationDbContext db)
         {
             _db = db ?? throw new ArgumentNullException(nameof(db));
         }
@@ -25,17 +25,12 @@ namespace AbbeyWeb.Pages.Categories
         {
             try
             {
-                if (Category.Name == Category.DisplayOrder.ToString())
-                {
-                    ModelState.AddModelError(string.Empty, "The Display Order can not exactly match the name.");
-                }
-
                 if (ModelState.IsValid)
                 {
-                     _db.Categories.Update(Category);
+                    _db.Categories.Remove(Category);
                     await _db.SaveChangesAsync();
 
-                    TempData["success"] = "Category updated sucessfully.";
+                    TempData["success"] = "Category deleted sucessfully.";
 
                     return RedirectToPage("Index");
                 }

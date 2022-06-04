@@ -1,5 +1,5 @@
 ﻿@page
-@model AbbeyWeb.Pages.Categories.EditModel
+@model AbbeyWeb.Pages.Categories.DeleteModel
 
 
 <form method="post">
@@ -9,18 +9,15 @@
        
         <div class="mb-3">
             <label asp-for="Category.Name"></label>
-            <input asp-for="@Model.Category.Name" class="form-control" />
-            <span asp-validation-for="Category.Name" class="text-danger"></span>
+            <input asp-for="@Model.Category.Name" class="form-control" readonly />
         </div>
 
         <div class="mb-3">
             <label asp-for="Category.DisplayOrder"></label>
-            <input asp-for="@Model.Category.DisplayOrder" class="form-control" />
-            <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
-
+            <input asp-for="@Model.Category.DisplayOrder" class="form-control" readonly>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width:150px"><i class="bi bi-archive"></i>Edit</button>
+        <button type="submit" class="btn btn-danger" style="width:150px"><i class="bi bi-archive"></i>Delete</button>
         <a asp-page="Index" class="btn btn-primary" style="width:150px"><i class="bi bi-arrow-left"></i>Back to List</a>
     </div>
 </form>

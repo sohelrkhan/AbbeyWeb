@@ -31,6 +31,8 @@ namespace AbbeyWeb.Pages.Categories
                 {
                     await _db.Categories.AddAsync(Category);
                     await _db.SaveChangesAsync();
+
+                    TempData["success"] = "Category created sucessfully.";
                     return RedirectToPage("Index");
                 }
 
